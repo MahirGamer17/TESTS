@@ -7,6 +7,26 @@
 <title>Scroll Video</title>
 
 <style>
+  .fx-liquid {
+  font: 600 32px "JetBrains Mono", monospace;
+  color: transparent;
+  /* Define the liquid gradient */
+  background: linear-gradient(0deg, 
+      #4FF8FF 0 46%, 
+      rgba(79, 248, 255, 0.55) 48%, 
+      transparent 52% 100%
+  ) 0 0 / 100% 220%;
+  /* Clip background to text shape */
+  -webkit-background-clip: text;
+  background-clip: text;
+  /* Animate the background position to simulate rising liquid */
+  animation: fx-liquid 3.4s ease-in-out infinite;
+}
+
+@keyframes fx-liquid {
+  0%, 100% { background-position: 0 -110%; }
+  50%      { background-position: 0 10%; }
+}   
 * {
   margin: 0;
   padding: 0;
@@ -84,7 +104,7 @@ p {
 
   <section>
     <div>
-      <h1>The End is coming</h1>
+      <h1 class="fx-liquid">The End is coming</h1>
     </div>
   </section>
 </div>
