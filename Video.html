@@ -14,7 +14,7 @@
 }
 
 body {
-  color: red;
+  color: white;
   font-family: Arial, sans-serif;
   background: black;
 }
@@ -60,22 +60,22 @@ p {
 <div class="content">
   <section>
     <div>
-      <h1>HE WHO REMAIN</h1>
-      <p>NEVER TRUST ANYONE</p>
+      <h1>Explore the World</h1>
+      <p>Scroll down to begin</p>
     </div>
   </section>
 
   <section>
     <div>
-      <h1>SEE YOU </h1>
-      <p>NOW RUN FOR YOU LIFE</p>
+      <h1>Discover</h1>
+      <p>Every scroll reveals a new frame</p>
     </div>
   </section>
 
   <section>
     <div>
-      <h1>IT ALWAY FIND YOU</h1>
-      <p>YOU HIDE BUT CAN RUN</p>
+      <h1>Experience</h1>
+      <p>Move forward and backward</p>
     </div>
   </section>
 
@@ -92,9 +92,6 @@ p {
   </section>
 </div>
 
-
-
-
 <script>
 const video = document.querySelector(".video-bg");
 
@@ -104,6 +101,7 @@ let ready = false;
 
 video.addEventListener("loadedmetadata", () => {
   ready = true;
+  video.pause();
   updateVideo();
 });
 
@@ -118,10 +116,8 @@ function updateVideo() {
     ? window.scrollY / maxScroll
     : 0;
 
-  // Repeat the video timeline
-  const time =
-    (progress * 5 * video.duration) %
-    video.duration;
+  const time = Math.max(0, Math.min(1, progress))
+    * video.duration;
 
   if (Math.abs(video.currentTime - time) > 0.03) {
     video.currentTime = time;
@@ -134,8 +130,6 @@ window.addEventListener("scroll", updateVideo, {
 
 window.addEventListener("resize", updateVideo);
 </script>
-
-
 
 </body>
 </html>
