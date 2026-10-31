@@ -54,7 +54,7 @@ p {
 <body>
 
 <video class="video-bg" muted playsinline preload="auto">
-  <source src="ffc69ce7caa10cc9b451dd7f8f759b73.mp4" type="video/mp4">
+  <source src="background.mp4" type="video/mp4">
 </video>
 
 <div class="content">
@@ -92,6 +92,7 @@ p {
   </section>
 </div>
 
+
 <script>
 const video = document.querySelector(".video-bg");
 
@@ -101,7 +102,6 @@ let ready = false;
 
 video.addEventListener("loadedmetadata", () => {
   ready = true;
-  video.pause();
   updateVideo();
 });
 
@@ -116,8 +116,10 @@ function updateVideo() {
     ? window.scrollY / maxScroll
     : 0;
 
-  const time = Math.max(0, Math.min(1, progress))
-    * video.duration;
+  // Repeat the video timeline
+  const time =
+    (progress * 5 * video.duration) %
+    video.duration;
 
   if (Math.abs(video.currentTime - time) > 0.03) {
     video.currentTime = time;
