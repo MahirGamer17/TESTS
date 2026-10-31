@@ -14,7 +14,7 @@
 }
 
 body {
-  color: white;
+  color: red;
   font-family: Arial, sans-serif;
   background: black;
 }
@@ -54,7 +54,7 @@ p {
 <body>
 
 <video class="video-bg" muted playsinline preload="auto">
-  <source src="background.mp4" type="video/mp4">
+  <source src="ffc69ce7caa10cc9b451dd7f8f759b73.mp4" type="video/mp4">
 </video>
 
 <div class="content">
@@ -94,25 +94,20 @@ p {
 
 
 
+
 <script>
 const video = document.querySelector(".video-bg");
 
-let ready = false;
-let targetTime = 0;
-let currentTime = 0;
-let animationStarted = false;
-
 video.pause();
+
+let ready = false;
 
 video.addEventListener("loadedmetadata", () => {
   ready = true;
-  updateTarget();
-  currentTime = targetTime;
-  video.currentTime = currentTime;
-  animate();
+  updateVideo();
 });
 
-function updateTarget() {
+function updateVideo() {
   if (!ready || !video.duration) return;
 
   const maxScroll =
@@ -123,36 +118,23 @@ function updateTarget() {
     ? window.scrollY / maxScroll
     : 0;
 
-  // 5 loops through the video
-  targetTime =
-    ((progress * 5) % 1) * video.duration;
-}
+  // Repeat the video timeline
+  const time =
+    (progress * 5 * video.duration) %
+    video.duration;
 
-function animate() {
-  if (!ready) return;
-
-  // Smooth interpolation
-  currentTime += (targetTime - currentTime) * 0.12;
-
-  // Keep the time inside the video
-  currentTime = Math.max(
-    0,
-    Math.min(video.duration - 0.001, currentTime)
-  );
-
-  if (Math.abs(video.currentTime - currentTime) > 0.04) {
-    video.currentTime = currentTime;
+  if (Math.abs(video.currentTime - time) > 0.03) {
+    video.currentTime = time;
   }
-
-  requestAnimationFrame(animate);
 }
 
-window.addEventListener("scroll", updateTarget, {
+window.addEventListener("scroll", updateVideo, {
   passive: true
 });
 
-window.addEventListener("resize", updateTarget);
+window.addEventListener("resize", updateVideo);
 </script>
+
 
 
 </body>
