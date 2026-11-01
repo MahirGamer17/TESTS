@@ -1,0 +1,71 @@
+<html>
+<head>
+    <title>Job Application Form</title>
+</head>
+<body>
+    <center>
+        <h1>JOB APPLICATION FORM</h1>
+        <hr width="70%">
+        <p>Please fill in your details below.</p>
+    <hr>
+    <form>
+        <h2>Personal Details</h2>
+        Full Name:<input type="text" name="fullname" required><br><br>
+        Date of Birth:<input type="date" name="dob"><br><br>
+        Gender:
+        <input type="radio" name="gender" value="Male"> Male
+        <input type="radio" name="gender" value="Female"> Female
+        <input type="radio" name="gender" value="Other"> Other
+        <br><br>
+        Email:<input type="email" name="email" required><br><br>
+        Phone Number:<input type="tel" name="phone"><br><br>
+        Address:<br><textarea name="address" rows="4" cols="35"></textarea><br><br>
+        <hr>
+        <h2>Job Details</h2>
+        Position Applied For:
+        <select name="position">
+            <option>Web Designer</option>
+            <option>Computer Operator</option>
+            <option>Office Assistant</option>
+            <option>Data Entry Operator</option>
+        </select>
+        <br><br>
+        Employment Type:
+        <input type="radio" name="type" value="Full Time"> Full Time
+        <input type="radio" name="type" value="Part Time"> Part Time
+        <br><br>
+        Expected Salary:
+        <input type="number" name="salary">
+        <br><br>
+        <hr>
+        <h2>Educational Qualification</h2>
+        Highest Qualification:
+        <select name="qualification">
+            <option>Class 10</option>
+            <option>Class 12</option>
+            <option>Diploma</option>
+            <option>Graduation</option>
+            <option>Other</option>
+        </select>
+        <br><br>
+        School / College:
+        <input type="text" name="school">
+        <br><br>
+        Skills:
+        <br>
+        <input type="checkbox" name="skills" value="HTML"> HTML
+        <input type="checkbox" name="skills" value="Typing"> Typing
+        <input type="checkbox" name="skills" value="Communication"> Communication
+        <br><br>
+        <hr>
+        <h2>Declaration</h2>
+        <input type="checkbox" required>
+        I confirm that the information given above is correct.
+        <br><br>
+            <input type="submit" value="Submit Application">
+            <input type="reset" value="Clear Form">
+    </form>
+ </center>
+    <hr>
+</body>
+</html>
